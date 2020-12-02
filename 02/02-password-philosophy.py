@@ -15,6 +15,8 @@ with open("02-input.txt") as f:
 
   valid_passwords = 0
 
+  valid_passwords_2 = 0
+
   for policy in policies:
     minimum, maximum, char, password = policy
 
@@ -23,4 +25,12 @@ with open("02-input.txt") as f:
     if int(minimum) <= occurrences <= int(maximum):
       valid_passwords += 1 
   
-  print("No. of Valid Passwords: {}".format(valid_passwords))
+  for policy in policies:
+    pos1, pos2, char, password = policy
+
+    if (password[int(pos1) - 1] is char) ^ (password[int(pos2) - 1] is char):
+      valid_passwords_2 += 1
+
+  print("No. of Valid Passwords (count): {}".format(valid_passwords))
+  print("No. of Valid Passwords (position): {}".format(valid_passwords_2))
+  
